@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 resource "aws_security_group" "instance" {
-  name = "terraform-example-instance"
-
+  name   = "terraform-example-instance"
+  vpc_id = "vpc-0b4b5f08822988a69"
   ingress {
     from_port   = 8080
     to_port     = 8080
