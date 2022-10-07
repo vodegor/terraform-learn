@@ -7,6 +7,14 @@ resource "aws_instance" "example" {
   subnet_id     = "subnet-0682ae7ae47957e6a"
   instance_type = "t2.micro"
 
+  user_data = <<-EOF
+              #!/bin/bash
+              echo "Hello, World" > index.html
+              nohup busybox httpd -f -p 8080 &
+              EOF
+
+  user_data_replace_on_change = true
+
   tags = {
     Name = "terraform-example"
   }
